@@ -9,12 +9,13 @@
 // dice = Math.floor(Math.random() * 6) + 1;
 // document.querySelector('#current-' + currentPlayer).textContent = dice;
 // document.querySelector('#current-' + currentPlayer).innerHTML = '<span>' + dice + '</span>';
-var gamePlay = true;
+var gamePlay, currectDice;
 init();
 
 document.querySelector(".btn-roll").addEventListener("click", function () {
     if (gamePlay) {
         dice = Math.floor(Math.random() * 6) + 1;
+        var currectDice = dice;
         var selector = document.querySelector('.dice');
         selector.style.display = "block";
         selector.src = "dice" + dice + ".png";
@@ -27,6 +28,9 @@ document.querySelector(".btn-roll").addEventListener("click", function () {
             nextFunction()
         }
     }
+    if (currectDice === 6 && (dice === 6)) {
+        nextFunction()
+    }
 
 })
 
@@ -36,7 +40,7 @@ document.querySelector(".btn-hold").addEventListener("click", function () {
         console.log(scores[currentPlayer])
         document.querySelector("#score-" + currentPlayer).textContent = scores[currentPlayer]
 
-        if (scores[currentPlayer] >= 10) {
+        if (scores[currentPlayer] >= 100) {
             console.log("winner")
             document.querySelector("#name-" + currentPlayer).textContent = "Winner!!";
             gamePlay = false;
