@@ -24,20 +24,22 @@ document.querySelector(".btn-roll").addEventListener("click", function () {
             roundScore = roundScore + dice;
             document.querySelector("#current-" + currentPlayer).textContent = roundScore;
         }
+        else if (currectDice === 6 && (dice === 6)) {
+            scores[currentPlayer] = 0;
+            nextFunction()
+        }
         else {
+            scores[currentPlayer] = 0;
             nextFunction()
         }
     }
-    if (currectDice === 6 && (dice === 6)) {
-        nextFunction()
-    }
+
 
 })
 
 document.querySelector(".btn-hold").addEventListener("click", function () {
     if (gamePlay) {
         scores[currentPlayer] = scores[currentPlayer] + roundScore;
-        console.log(scores[currentPlayer])
         document.querySelector("#score-" + currentPlayer).textContent = scores[currentPlayer]
 
         if (scores[currentPlayer] >= 100) {
